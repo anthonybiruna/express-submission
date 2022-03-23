@@ -19,9 +19,10 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT
 
-const { employeeRoutes } = require("./routes");
+const { employeeRoutes, authRoutes } = require("./routes");
 
 app.use("/employees", employeeRoutes)
+app.use("/auth", authRoutes)
 
 app.listen(PORT, () => {
   console.log("Listening in port", PORT)

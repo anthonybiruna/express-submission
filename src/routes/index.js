@@ -1,5 +1,7 @@
-const contentRoutes = require("./contents");
+const employeeRoutes = require("./employees");
+const authRoutes = require("./auth");
 
 module.exports = {
-  contentRoutes,
+  employeeRoutes,
+  authRoutes
 }
