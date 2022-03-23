@@ -1,4 +1,4 @@
-const employeeDB = [
+const contentDB = [
   {
     id: 1,
     username: "ted",
@@ -18,5 +18,5 @@ const employeeDB = [
 ]
 
 module.exports = {
-  employeeDB
+  contentDB
 }
