@@ -120,7 +120,51 @@ const employeeControllers = {
     res.status(200).json({
       message: "Deleted employee"
     })
+  },
+  deleteEmployees: (req,res) => {
+    const employeesId = req.query.id
+
+    employeesId.forEach((id) => {
+      const findIndex = employeeDB.findIndex((val) => {
+        return val.id == id
+      })
+      employeeDB.splice(findIndex, 1)
+    })
+
+    res.status(200).json({
+      message: "Employees deleted"
+    })
+  },
+  editEmployees: (req, res) => {
+    const employeesId = req.query.id
+    const editEmployeeData = req.body;
+
+    employeesId.forEach((id) => {
+
+      const findIndex = employeeDB.findIndex(val => {
+        return val.id == id
+      })
+      if (findIndex == -1) {
+        res.status(404).json({
+          message: "Employee not found"
+        })
+        return
+      }
+  
+      employeeDB[findIndex] = {
+        ...employeeDB[findIndex],
+        ...editEmployeeData
+      }
+  
+      res.status(200).json({
+        message: "Edited employee",
+        result: employeeDB[findIndex]
+      })
+    })
+
   }
 }
+
+
 
 module.exports = employeeControllers
